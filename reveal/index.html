@@ -625,6 +625,12 @@
 						Таблица порядовых дней в году
 					</aside>
 				</section>
+				<section id="calendar_table1" data-menu-title="Порядковые номера дней в невисокосном году">
+
+					<aside class="notes">
+						Таблица порядовых дней в невисокосном году
+					</aside>
+				</section>
 				<section data-markdown data-separator-notes="^Note:" data-menu-title="Исходный код программы">
 					<h3>Исходный код программы</h3>
 					<code>
@@ -1154,6 +1160,153 @@
 				document.querySelector('#calendar_table').style = 
 					"font-size: 9pt;";
 			}
+			let calendar1 = () => {
+				let table = [];
+				table[0]=['<table><tr>','<th>Jan</th>','<th>Feb</th>','<th>March</th>','<th>Apr</th>','<th>May</th>','<th>Jun</th>',
+				'<th>Jul</th>','<th>Aug</th>','<th>Sep</th>','<th>Oct</th>','<th>Nov</th>','<th>Dec</th></tr>'];
+				
+				for(let i=1;i<=31;i++)
+				{
+					let k=i;
+					if(i<29){
+						let day = ['<tr>'];
+						for(let j=1;j<=12;j++)
+						{
+							if(j<=7){
+								if((j!=2) && (j%2!=0)){
+									day.push('<td>'+k+'</td>');
+									k+=31;
+								}
+								else if((j!=2) && (j%2==0)){
+									day.push('<td>'+k+'</td>');
+									k+=30;
+								}
+								else if(j==2){
+									day.push('<td>'+k+'</td>');
+									k+=28;
+								}
+							} else{
+									if(j%2==0){
+										day.push('<td>'+k+'</td>');
+										k+=31;
+									}
+									else if(j%2!=0){
+										day.push('<td>'+k+'</td>');
+										k+=30;
+									}
+								}
+						}
+						day.push('</tr>');
+						table[i+1] = day;
+					} 
+					else{
+						if(i==30){
+							let day = ['<tr>'];
+							for(let j=1;j<=12;j++)
+							{
+								if(j<=7){
+									if((j!=2) && (j%2!=0)){
+										day.push('<td>'+k+'</td>');
+										k+=31;
+									}
+									else if((j!=2) && (j%2==0)){
+										day.push('<td>'+k+'</td>');
+										k+=30;
+									}
+									else if(j==2){
+										day.push('<td>'+' - '+'</td>');
+										k+=28;
+									}
+								} else{
+										if(j%2==0){
+											day.push('<td>'+k+'</td>');
+											k+=31;
+										}
+										else if(j%2!=0){
+											day.push('<td>'+k+'</td>');
+											k+=30;
+										}
+									}
+							}
+							day.push('</tr>');
+							table[i+1] = day;
+
+						} else if(i==29){
+							let day = ['<tr>'];
+							for(let j=1;j<=12;j++)
+							{
+								if(j<=7){
+									if((j!=2) && (j%2!=0)){
+										day.push('<td>'+k+'</td>');
+										k+=31;
+									}
+									else if((j!=2) && (j%2==0)){
+										day.push('<td>'+k+'</td>');
+										k+=30;
+									}
+									else if(j==2){
+										day.push('<td>'+' - '+'</td>');
+										k+=28;
+									}
+									
+								} else{
+										if(j%2==0){
+											day.push('<td>'+k+'</td>');
+											k+=31;
+										}
+										else if(j%2!=0){
+											day.push('<td>'+k+'</td>');
+											k+=30;
+										}
+									}
+							}
+							day.push('</tr>');
+							table[i+1] = day;
+
+						} else if(i==31){
+							let day = ['<tr>'];
+							for(let j=1;j<=12;j++)
+							{
+								if(j<=7){
+									if((j!=2) && (j%2!=0)){
+										day.push('<td>'+k+'</td>');
+										k+=31;
+									}
+									else if((j!=2) && (j%2==0)){
+										day.push('<td>'+' - '+'</td>');
+										k+=30;
+									}
+									else if(j==2){
+										day.push('<td>'+' - '+'</td>');
+										k+=28;
+									}
+									
+								} else{
+										if(j%2==0){
+											day.push('<td>'+k+'</td>');
+											k+=31;
+										}
+										else if(j%2!=0){
+											day.push('<td>'+' - '+'</td>');
+											k+=30;
+										}
+									}
+							}
+							day.push('</tr>');
+							table[i+1] = day;
+						}
+						
+					}
+
+				}
+				table.push('</table>');
+				let s = table.join().replace(/,/g, '');
+									
+				document.querySelector('#calendar_table1').innerHTML=s;
+				
+				document.querySelector('#calendar_table1').style = 
+					"font-size: 9pt;";
+			}
 			// let ex_g = () => {
 			// 	let P = Number(document.querySelector('#PEx_g').value);
 			// 	let n = Number(document.querySelector('#nEx_g').value)/365;
@@ -1190,6 +1343,7 @@
 			//Запускаем программы только после полной загрузки
 			window.onload = () =>  {
 				calendar();
+				calendar1();
 					//Открываем заметки или по кнопке или по клавише D
 					document.querySelector('#noteswitch').onclick = showNodes;
 				Reveal.configure({
