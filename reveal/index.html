@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<!-- title -->
-		<title>Финансовой математики</title>
+		<title>Финансовая математика</title>
 
 		<!-- load style -->
 		<link rel="stylesheet" href="css/reveal.css">
@@ -115,6 +115,15 @@
 
 				<section data-markdown data-separator-notes="^Note:">
 					<script type="text/template">
+						#### График роста по простым процентам
+						--------------
+						<img src="image/16.jpg" alt="Альтернативный текст" height="250">
+						Note:  
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
 						Формула дисконтирования
 						--------------
 						$$
@@ -215,7 +224,15 @@
 
 				<section data-markdown data-separator-notes="^Note:">
 					<script type="text/template">
-						Пример:
+						Примеры
+						--------------
+						Note: Примеры
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Пример 1.
 						--------------
 						
 						Ссуда в размере 1 млн.руб. выдана 20.01 до 05.10 включительно под 18% годовых. Какую сумму должен заплатить должник в конце срока при начислении простых процентов?
@@ -226,10 +243,9 @@
 
 				<section data-markdown data-separator-notes="^Note:">
 					<script type="text/template">
-						Пример:
+						##### Решение
 						--------------
 
-						Решение:  
 						Точные проценты с точным числом дней ссуды (365/365)
 						$$
 							S=1000000(1+\dfrac{258}{365}0,18)=1127233
@@ -242,16 +258,81 @@
 				</section>
 				<section data-markdown data-separator-notes="^Note:">
 					<script type="text/template">
-						Пример:
+						##### Решение
 						--------------
-
-						Решение:  
+ 
 						Обыкновенные проценты с приблеженным числом дней ссуды (360/360)
 						$$
 							S=1000000(1+\dfrac{255}{360}0,18)=1127500
 						$$
 					</script>
 				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Пример 2.
+						--------------
+						
+						По депозитному 30-дневному сертификату номиналом в 10 тыс. руб. начисляются обыкновенные проценты по ставке 25% годовых. Расчитайте, какой 
+						должна быть годовая процентная ставка при начислении точных процентов с условием, чтобы они были равны обыкновенным. Какова величина начисленных
+						процентов? Год високосный.
+
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						##### Решение
+						--------------
+						Величина начисленных процентов:
+						$$
+						I_1=Pn_1i_1=10000\cdot\dfrac{1}{12}\cdot 0,25=208,3
+						$$
+						Годовая процентная ставка при начислении точных процентов:
+						$$
+							I_2=Pn_2
+							i_2=\dfrac{I_2}{Pn_2}=\dfrac{I_1}{Pn_2}=\dfrac{n_1}{n_2}\cdot i_1=\dfrac{30\cdot366}{360\cdot30}\cdot0,25=0,2542
+						$$
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Пример 3.
+						--------------
+						
+						Депозит в 40 тыс. руб. положен в банк на 5 лет под процентную ставку 28% годовых. Найдите наращенную сумму, если ежегодно начисляются сложные
+						проценты. Составьте схему возрастания капитала по годам.
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						##### Решение
+						--------------
+						Наращенная сумма:
+						$$
+							S=P(1+i)^n=40(1+0,28)^5=137,439
+						$$
+						$S_1$ - наращенная сумма к концу $i$ - го года
+						$$
+							S_1=P(1+i)=51,2
+						$$
+						$$
+							S_2=P(1+i)^2=65,536
+						$$
+						$$
+							S_3=P(1+i)^3=83,886
+						$$
+						$$
+							S_4=P(1+i)^4=107,374
+						$$
+						$$
+							S_5=S=137,439
+						$$
+					</script>
+				</section>
+
 
 				<!--<section>
 					<h3>Поиск наращенной суммы</h3>
@@ -430,7 +511,7 @@
 						Программа по поиску наращенной суммы
 					</aside>
 				</section> -->
-				<section data-markdown data-separator-notes="^Note:">
+				<section data-markdown data-separator-notes="^Note:" data-menu-title="Исходный код программы">
 					<h3>Исходный код программы</h3>
 					<p><code>
 						let app_g = () => {
@@ -544,7 +625,7 @@
 						Таблица порядовых дней в году
 					</aside>
 				</section>
-				<section data-markdown data-separator-notes="^Note:">
+				<section data-markdown data-separator-notes="^Note:" data-menu-title="Исходный код программы">
 					<h3>Исходный код программы</h3>
 					<code>
 						let calendar = () =&gt; {
@@ -665,6 +746,21 @@
 					<aside class="notes">
 						Исходный код программы генерации таблицы порядовых дней в году
 					</aside>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:" data-menu-title="Картинка">
+					<script type="text/template">
+						<img src="image/17.png" alt="Альтернативный текст">
+						Note:  
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Спасибо за внимание
+						==================
+						
+					</script>
 				</section>
 			</div>
 		</div>
