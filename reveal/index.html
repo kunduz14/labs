@@ -1,0 +1,1144 @@
+<!doctype html>
+<html>
+	<head>
+		<!-- meta -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- title -->
+		<title>Финансовой математики</title>
+
+		<!-- load style -->
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+	
+		<!--Fonts-->
+		<link rel="stylesheet" 
+			href="css/font-awesome-4.3.0/css/font-awesome.min.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			let link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+			.formula {
+			 margin-bottom: 10px !important;
+		    }
+			.offscreen {
+				clip: rect(1px 1px 1px 1px);
+				clip: rect(1px, 1px, 1px, 1px);
+				height: 1px;
+				overflow: hidden;
+				position: absolute;
+				white-space: nowrap;
+				width: 1px;
+			}
+			.offscreen:focus {
+				position: relative;
+				clip: auto;
+				width: auto;
+				height: auto;
+				overflow: auto;
+			}
+
+
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+
+				<!-- Кнопка для включения и отключения субтитр -->
+			<div class="chalkboard-button" id="toggle-chalkboard" 
+				style="position: fixed; z-index: 30; font-size: 22px;
+				left: 60px; bottom: 32px;" >
+				<a href="#" id="noteswitch" title="Включение/отключение
+					заметок к слайду">
+					<i class="fa fa-sticky-note" aria-label="
+					Заметки к слайду"></i>
+				</a>
+			</div>
+
+			<div class="slides">
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Финансовая математика
+						==================
+												
+						Note: Финансовая математика
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Определение
+						--------------
+						Финансовая математика - раздел прикладной математики, имеющий дело с математическими задачами, связанными с финансовыми расчётами.
+						Note: Финансовая математика - раздел прикладной математики, имеющий дело с математическими задачами, связанными с финансовыми расчётами.
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Формулы наращения и дисконтирования по простым процентным ставкам
+						--------------
+						Note: Формулы наращения и дисконтирования по простым процентным ставкам
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Формула наращения
+						--------------
+						$$
+							I = Pni
+						$$
+						$$
+							S = P + I = p + Pni = P(1 + ni)
+						$$
+
+						$I$ - проценты за весь срок ссуды  
+						$P$ - первоначальная сумма долга  
+						$S$ - наращенная сумма, т.е. сумма в конце долга  
+						$i$ - ставка наращения процентов  
+						
+						Note:  Под наращенной суммой ссуды понимают первоначальную ее сумму с начисленными процентами к концу срока начисления.
+						Наращенная сумма опр-ся умножением первоначальной суммы долга на множитель наращения. 
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Формула дисконтирования
+						--------------
+						$$
+							P = \dfrac{S}{1+ni}
+						$$
+
+						$n$ - срок ссуды  
+						$$
+							n = \dfrac{t}{K}
+						$$
+
+						$t$ - число дней ссуды  
+						$K$ - число дней в году
+
+						Note: 
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Точные проценты с точным числом дней ссуды
+
+						Период начисления процентов равен фактическому сроку, продолжительность года $K = 365$ дней (невисокосный год) или 366 дней (високосный год).
+
+						Note: Этот вариант дает самые точные результаты.
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Обыкновенные проценты с точным числом дней ссуды
+
+						Период начисления процентов равен фактическому сроку, продолжительность года $K = 360$ дней.
+
+						Note: Этот вариант дает несколько больший результат.
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						### Обыкновенные проценты с приблеженным числом дней ссуды
+
+						Oдин полный месяц равен 30 дням, продолжительность года $K = 360$ дней.
+
+						Note: Такой метод применяется тогда, когда не требуется большой точности, например прир промежуточных расчетах.
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Переменные ставки
+
+						$$
+							S = P(1 + n_1 i_1 +...+ n_m i_m) = P(1 + \sum_t{n_t i_t})
+						$$
+						$$
+							n = \sum_t n_t
+						$$
+
+						Note:В кредитных соглашениях иногда предусматриваются изменяющиеся во времени процентные ставки. 
+						Если это простые ставки, то наращенная на конец срока сумма определяется след образом.
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Начисление процентов при изменении сумм депозита во времени
+
+						$$
+							I = \sum_j{R_j n_j i} = \dfrac{\sum{R_j t_j}}{100}\cdot\dfrac{i}{K}
+						$$
+						$R_j$ - остаток средств на счете в мемент $j$ после очередного поступления  
+						$n_j$ - срок хранения денег  
+						$t_j$ - срок в днях между последовательными изменениями остатков на счете
+
+						Note: Принципиально ничего не меняется, если сумма , на которую начисляются проценты, изменяет свою величину во времени.
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Реинвестирование по простым ставкам
+
+						$$
+							S = P(1+n_1i_1)\ldots(1+n_ti_t)\ldots
+						$$
+						$i_t$ - размер ставок по которым производится реинвестирование
+						$$
+							S = P(1+ni)^m
+						$$
+						$m$ - количество повторений реинвестирования
+
+						Note: В практике при инвестировании средств в краткросрочные депозиты иногда прибегают к неоднократному последовательному повторению 
+						наращения по простым процентам в пределах заданного общего срока. Если промежуточные срокиначисления и ставки не изменяются во времени
+
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Пример:
+						--------------
+						
+						Ссуда в размере 1 млн.руб. выдана 20.01 до 05.10 включительно под 18% годовых. Какую сумму должен заплатить должник в конце срока при начислении простых процентов?
+						При решении применяем все три метода. Предварительно определим число дней ссуды: точное - 258, приблеженное 255.
+
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Пример:
+						--------------
+
+						Решение:  
+						Точные проценты с точным числом дней ссуды (365/365)
+						$$
+							S=1000000(1+\dfrac{258}{365}0,18)=1127233
+						$$
+						Обыкновенные проценты с точным числом дней ссуды (360/365)
+						$$
+							S=1000000(1+\dfrac{258}{360}0,18)=1129000
+						$$
+					</script>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Пример:
+						--------------
+
+						Решение:  
+						Обыкновенные проценты с приблеженным числом дней ссуды (360/360)
+						$$
+							S=1000000(1+\dfrac{255}{360}0,18)=1127500
+						$$
+					</script>
+				</section>
+
+				<!--<section>
+					<h3>Поиск наращенной суммы</h3>
+					<label> Первоначальная сумма долга:
+						<input type="text" value="" id="PApp"> <br>
+					</label>
+					<label> Срок ссуды:
+						<input type="text" value="" id="nApp"> <br>
+					</label>
+					<label> Ставка наращения процентов:
+						<input type="text" value="" id="iApp"> <br>
+					</label>
+					Наращенная сумма:
+					<output id="SApp"></output>
+
+					<aside class="notes">
+						Программа по поиску наращенной суммы
+					</aside>
+				</section>-->
+
+				<section>
+					<h3>График наращенной суммы прост проц</h3>
+					<div style="display: flex"> 
+						<label> p:
+							<input type="text" value="" id="PApp_g"> <br>
+						</label>
+						<label> n(дней):
+							<input type="text" value="" id="nApp_g"> <br>
+						</label>
+						<label> i:
+							<input type="text" value="" id="iApp_g"> <br>
+						</label>
+								S:
+							<output id="SApp_g"></output>
+					</div>
+					
+					<div id="plotApp" style="height: 400px; "></div>
+
+					<aside class="notes">
+						Программа по поиску наращенной суммы
+					</aside>
+				</section>
+
+				<!-- <section>
+						<h3>График точной суммы прост проц</h3>
+						<div style="display: flex"> 
+							<label> p:
+								<input type="text" value="" id="PEx_g"> <br>
+							</label>
+							<label> n(дней):
+								<input type="text" value="" id="nEx_g"> <br>
+							</label>
+							<label> i:
+								<input type="text" value="" id="iEx_g"> <br>
+							</label>
+									S:
+							<output id="SEx_g"></output>
+						</div>
+						
+						<div id="plotEx" style="height: 400px; "></div>
+	
+						<aside class="notes">
+							Программа по поиску наращенной суммы
+						</aside>
+					</section>
+
+					<section>
+							<h3>График точной суммы прост проц</h3>
+							<div style="display: flex"> 
+								<label> p:
+									<input type="text" value="" id="PEx_g"> <br>
+								</label>
+								<label> n(дней):
+									<input type="text" value="" id="nEx_g"> <br>
+								</label>
+								<label> i:
+									<input type="text" value="" id="iEx_g"> <br>
+								</label>
+										S:
+								<output id="SEx_g"></output>
+							</div>
+							
+							<div id="plotEx" style="height: 400px; "></div>
+		
+							<aside class="notes">
+								Программа по поиску наращенной суммы
+							</aside>
+						</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Формулы наращения и дисконтирования по сложным процентным ставкам
+						--------------
+
+					</script>
+				</section> -->
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Формула наращения
+						--------------
+						$$
+							S=P(1+i)^n
+						$$
+						$$
+							I=S-P=P((1+i)^n-1)
+						$$
+						$$
+							I_p=P((1+i)^n-(1+ni))
+						$$
+						
+						Note: В средене- и долгосрочных финансовых кредитных операциях, если проценты не выплачиваются сразупосле их начисления, а присоединяются к сумме долга, применяют сложные проценты.
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						Дисконтирование по сложной ставке
+						--------------
+						$$
+							P=\dfrac{S}{(1+i)^n}=Sv^n
+						$$
+						$$
+							D=S-P=S(1-v^n)
+						$$
+						Note:
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Переменные ставки
+
+						$$
+							S = P(1 + i_1)^{n_1} +\ldots+ (1+i_k)^{n_k}
+						$$
+
+						Note: Когда размер ставок меняется, общий множитель наращения определяется как произведение частных.
+					</script>
+				</section>
+
+				<section data-markdown data-separator-notes="^Note:">
+					<script type="text/template">
+						#### Начисление процентов при дробном числе лет
+
+						$$
+							S=P(1+i)^a(1+bi)
+						$$
+						$n=a+b$ - срок ссуды  
+						$a$ - целое число лет  
+						$b$ - дробная часть года
+
+						Note: Данный метод предполагает начисление процентов за целое число лет по формуле сложных процентов и за дробную часть срока по формуле простых процентов.
+					</script>
+				</section>
+				<!-- <section>
+					<h3>Программа для подсчета кредита</h3>
+					<div style="display: flex"> 
+						<label> p:
+							<input type="text" value="100" id="PApp_c"> <br>
+						</label>
+						<label> n(дней):
+							<input type="text" value="10" id="nApp_c"> <br>
+						</label>
+						<label> i:
+							<input type="text" value="10
+							" id="iApp_c"> <br>
+						</label>
+								S:
+							<output id="SApp_c"></output>
+					</div>
+					
+					<div id="plotApp1" style="height: 400px; "></div>
+
+					<aside class="notes">
+						Программа по поиску наращенной суммы
+					</aside>
+				</section> -->
+				<section data-markdown data-separator-notes="^Note:">
+					<h3>Исходный код программы</h3>
+					<p><code>
+						let app_g = () => {
+						let P = Number(document.querySelector('#PApp_g').value);
+						let n = Number(document.querySelector('#nApp_g').value)/360;
+						let n1 = Number(document.querySelector('#nApp_g').value)/360;
+						let n2 = Number(document.querySelector('#nApp_g').value)/365;
+						let i = Number(document.querySelector('#iApp_g').value)/100;
+						let S = P*(1+n*i);
+						let S1 = P*Math.pow((1+i),n);
+		
+						if ((document.querySelector('#PApp_g').value)>0 && (document.querySelector('#nApp_g').value)>0 &&(document.querySelector('#iApp_g').value)>0){
+							document.querySelector('#SApp_g').innerHTML = S;
+						}
+		
+						let x = math.parse('x');
+						let func = String((S-P)/n)+'x+'+String(P);
+						let func1 = String((S-P)/n1)+'x+'+String(P);
+						let func2 = String((S-P)/n2)+'x+'+String(P);
+						let func3 = String((S1-P)/n)+'x+'+String(P);
+						let func4 = String((S1-P)/n1)+'x+'+String(P);
+						let func5 = String((S1-P)/n2)+'x+'+String(P);
+		
+						let vecCompile = math.compile(math.parse(func).toString());
+						xValues = math.range(0,n+1, 1).toArray();
+		
+						let vecCompile1 = math.compile(math.parse(func1).toString());
+						xValues = math.range(0,n+1, 1).toArray();
+						let vecCompile2 = math.compile(math.parse(func2).toString());
+						xValues = math.range(0,n+1, 1).toArray();
+						let vecCompile3 = math.compile(math.parse(func3).toString());
+						xValues = math.range(0,n+1, 1).toArray();
+						let vecCompile4 = math.compile(math.parse(func4).toString());
+						xValues = math.range(0,n+1, 1).toArray();
+						let vecCompile5 = math.compile(math.parse(func5).toString());
+						xValues = math.range(0,n+1, 1).toArray();
+		
+						let yValues = xValues.map((x) => {
+							return vecCompile.evaluate({x});
+						});
+						let yValues1 = xValues.map((x) => {
+							return vecCompile1.evaluate({x});
+						});
+						let yValues2 = xValues.map((x) => {
+							return vecCompile2.evaluate({x});
+						});
+						let yValues3 = xValues.map((x) => {
+							return vecCompile3.evaluate({x});
+						});
+						let yValues4 = xValues.map((x) => {
+							return vecCompile4.evaluate({x});
+						});
+						let yValues5 = xValues.map((x) => {
+							return vecCompile5.evaluate({x});
+						});
+						let trace1 = {
+						x: xValues,
+						y: yValues,
+						type: 'scatter',
+						name: '360/360',
+						};
+		
+						let trace2 = {
+						x: xValues,
+						y: yValues1,
+						type: 'scatter',
+						name: '365/360',
+						};
+						let trace3 = {
+						x: xValues,
+						y: yValues2,
+						type: 'scatter',
+						name: '365/365',
+						};
+						let trace4 = {
+						x: xValues,
+						y: yValues3,
+						type: 'scatter',
+						name: '36365',
+						};
+						let trace5 = {
+						x: xValues,
+						y: yValues4,
+						type: 'scatter',
+						name: '36365',
+						};
+						let trace6 = {
+						x: xValues,
+						y: yValues5,
+						type: 'scatter',
+						name: '36365',
+						};
+		
+						let data = [ trace1, trace2, trace3, trace4, trace5, trace6 ];
+		
+						let layout ={
+						xaxis: {
+							range: [ 0, n ]
+						},
+						yaxis: {
+							range: [P, S1]
+						},
+						title:'Data Labels Hover'
+						};
+						Plotly.newPlot('plotApp', data);}
+				</code></p>
+				</section>
+				<section id="calendar_table" data-menu-title="Порядковые номера дней в году">
+
+					<aside class="notes">
+						Таблица порядовых дней в году
+					</aside>
+				</section>
+				<section data-markdown data-separator-notes="^Note:">
+					<h3>Исходный код программы</h3>
+					<code>
+						let calendar = () =&gt; {
+							let table = [];
+							table[0]=[&#39;&lt;table&gt;&lt;tr&gt;&#39;,&#39;&lt;th&gt;Jan&lt;/th&gt;&#39;,&#39;&lt;th&gt;Feb&lt;/th&gt;&#39;,&#39;&lt;th&gt;March&lt;/th&gt;&#39;,&#39;&lt;th&gt;Apr&lt;/th&gt;&#39;,&#39;&lt;th&gt;May&lt;/th&gt;&#39;,&#39;&lt;th&gt;Jun&lt;/th&gt;&#39;,
+							&#39;&lt;th&gt;Jul&lt;/th&gt;&#39;,&#39;&lt;th&gt;Aug&lt;/th&gt;&#39;,&#39;&lt;th&gt;Sep&lt;/th&gt;&#39;,&#39;&lt;th&gt;Oct&lt;/th&gt;&#39;,&#39;&lt;th&gt;Nov&lt;/th&gt;&#39;,&#39;&lt;th&gt;Dec&lt;/th&gt;&lt;/tr&gt;&#39;];
+							
+							for(let i=1;i&lt;=31;i++)
+							{
+								let k=i;
+								if(i&lt;30){
+									let day = [&lt;tr&gt;];
+									for(let j=1;j&lt;=12;j++)
+									{
+										if(j &lt; =7){
+											if((j!=2) && (j%2!=0)){
+												day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+												k+=31;
+											}
+											else if((j!=2) && (j%2==0)){
+												day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+												k+=30;
+											}
+											else if(j==2){
+												day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+												k+=29;
+											}
+										} else{
+												if(j%2==0){
+													day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+													k+=31;
+												}
+												else if(j%2!=0){
+													day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+													k+=30;
+												}
+											}
+									}
+									day.push(&#39;&lt;/tr&gt;&#39;);
+									table[i+1] = day;
+								} 
+								else{
+									if(i==30){
+										let day = [&#39;&lt;tr&gt;&#39;];
+										for(let j=1;j&lt;=12;j++)
+										{
+											if(j&lt;=7){
+												if((j!=2) && (j%2!=0)){
+													day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+													k+=31;
+												}
+												else if((j!=2) && (j%2==0)){
+													day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+													k+=30;
+												}
+												else if(j==2){
+													day.push(&#39;&lt;td&gt;&#39;+&#39; - &#39;+&#39;&lt;/td&gt;&#39;);
+													k+=29;
+												}
+											} else{
+													if(j%2==0){
+														day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+														k+=31;
+													}
+													else if(j%2!=0){
+														day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+														k+=30;
+													}
+												}
+										}
+										day.push(&#39;&lt;/tr&gt;&#39;);
+										table[i+1] = day;
+						
+									} else if(i==31){
+										let day = [&#39;&lt;tr&gt;&#39;];
+										for(let j=1;j&lt;=12;j++)
+										{
+											if(j&lt;=7){
+												if((j!=2) && (j%2!=0)){
+													day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+													k+=31;
+												}
+												else if((j!=2) && (j%2==0)){
+													day.push(&#39;&lt;td&gt;&#39;+&#39; - &#39;+&#39;&lt;/td&gt;&#39;);
+													k+=30;
+												}
+												else if(j==2){
+													day.push(&#39;&lt;td&gt;&#39;+&#39; - &#39;+&#39;&lt;/td&gt;&#39;);
+													k+=29;
+												}
+												
+											} else{
+													if(j%2==0){
+														day.push(&#39;&lt;td&gt;&#39;+k+&#39;&lt;/td&gt;&#39;);
+														k+=31;
+													}
+													else if(j%2!=0){
+														day.push(&#39;&lt;td&gt;&#39;+&#39; - &#39;+&#39;&lt;/td&gt;&#39;);
+														k+=30;
+													}
+												}
+										}
+										day.push(&#39;&lt;/tr&gt;&#39;);
+										table[i+1] = day;
+									}	
+								}
+							}
+							table.push(&#39;&lt;/table&gt;&#39;);
+							let s = table.join().replace(/,/g, &#39;&#39;);
+												
+							document.querySelector(&#39;#calendar_table&#39;).innerHTML=s;
+							
+							document.querySelector(&#39;#calendar_table&#39;).style = 
+								"font-size: 9pt;";
+						}
+					</code>
+
+					<aside class="notes">
+						Исходный код программы генерации таблицы порядовых дней в году
+					</aside>
+				</section>
+			</div>
+		</div>
+
+		<!-- load js -->
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/lib.js"></script>
+		<!-- Библиотека для математики -->
+		<script src="lib/js/math.min.js"></script>
+		<!-- Библиотека для математики -->
+		<script src="lib/js/algebrite.bundle-for-browser.js"></script>
+		<!-- Библиотека для рисования графиков -->
+		<script src="lib/js/plotly.min.js"></script>
+		
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				
+				// save slide
+				history: true,
+				slideNumber: true,
+				touch: true,
+
+				// show katex error
+				math: {
+					notificationsEnabled: true,
+				},
+
+           menu: {
+                side: 'left', //Расположение меню
+                numbers: true, //Нумерация слайдов
+                markers: true, //Маркер посещения
+                titleSelector: 'h1, h2, h3, h4, h5, h6', //Заголовки, отображаемые в меню
+                useTextContentForMissingTitles: true, //Если заголовка нет, то подставляем первые слова слайда
+                hideMissingTitles: false, //Если заголовка нет, то скрываем слайд из меню
+                transitions: true, //Установить меню анимации
+                openButton: true, //Скрыть кнопку меню
+                keyboard: true, //Открытие меню по кнопке m
+                // themes: [{
+                //     name: 'Black',
+                //     theme: 'css/theme/black.css'
+                // }, {
+                //     name: 'White',
+                //     theme: 'css/theme/white.css'
+                // }, {
+                //     name: 'League',
+                //     theme: 'css/theme/league.css'
+                // }, {
+                //     name: 'Sky',
+                //     theme: 'css/theme/sky.css'
+                // }, {
+                //     name: 'Beige',
+                //     theme: 'css/theme/beige.css'
+                // }, {
+                //     name: 'Simple',
+                //     theme: 'css/theme/simple.css'
+                // }, {
+                //     name: 'Serif',
+                //     theme: 'css/theme/serif.css'
+                // }, {
+                //     name: 'Blood',
+                //     theme: 'css/theme/blood.css'
+                // }, {
+                //     name: 'Night',
+                //     theme: 'css/theme/night.css'
+                // }, {
+                //     name: 'Moon',
+                //     theme: 'css/theme/moon.css'
+                // }, {
+                //     name: 'Solarized',
+                //     theme: 'css/theme/solarized.css'
+                // }],
+            },
+
+				// load dependencies
+				dependencies: [
+					{
+						// tex
+						src: 'plugin/math-katex/math-katex.js', 
+						async: true,
+						callback: () => {
+							// solve problem with katex 
+							let section = document.querySelectorAll('section script');
+								section.forEach( (item, i) => {
+									section[i].innerHTML = section[i].innerHTML
+										.replace(/\\/g,'\\\\')
+										.replace(/_/g,'\\_')
+										.replace(/\{/g,'\\\{')
+										.replace(/\}/g,'\\\}');
+							});
+						},
+					}, { 
+						//markdown
+						src: 'plugin/markdown/marked.js',
+					}, { 
+						src: 'plugin/markdown/markdown.js', 
+						async: true,
+					},{ 
+						//Menu
+						src: 'plugin/menu/menu.js',
+						async: true
+					},{ 
+						//notes
+						src: 'plugin/notes/notes.js', 
+						async: true
+					}, { 
+						// highlight syntax
+						src: 'plugin/highlight/highlight.js', 
+						async: true, 
+						callback: () => {
+							let code = document.querySelectorAll('code');
+							code.forEach ( (item, i) => {
+								code[i].innerHTML = code[i].innerHTML
+									.replace(/\\{/g,'{')
+									.replace(/\\}/g,'}');
+							});
+							hljs.initHighlightingOnLoad();
+						}
+					}
+				]
+			});
+
+			//Функция поиска наращенной суммы
+			/*let app = () => {
+				let P = Number(document.querySelector('#PApp').value);
+				let n = Number(document.querySelector('#nApp').value);
+				let i = Number(document.querySelector('#iApp').value)/100;
+				let S = P*(1+n*i);
+				if ((document.querySelector('#PApp').value)>0 && (document.querySelector('#nApp').value)>0 &&(document.querySelector('#iApp').value)>0){
+					document.querySelector('#SApp').innerHTML = S;
+				}
+				
+			}*/
+
+
+			// let app_c = () => {
+			// 	let P = Number(document.querySelector('#PApp_c').value);
+			// 	let n = Number(document.querySelector('#nApp_c').value)/12;
+			// 	let i = Number(document.querySelector('#iApp_c').value)/100;
+			// 	let S = P*(1+n*i);
+
+			// 	if ((document.querySelector('#PApp_c').value)>0 && (document.querySelector('#nApp_c').value)>0 &&(document.querySelector('#iApp_c').value)>0){
+			// 		document.querySelector('#SApp_c').innerHTML = S;
+			// 	}
+
+			// 	let x = math.parse('x');
+			// 	let func = String((S-P)/n)+'x+'+String(P);
+
+			// 	let vecCompile = math.compile(math.parse(func).toString());
+			// 	xValues = math.range(0,n+1, 1).toArray();
+				
+
+			// 	let yValues = xValues.map((x) => {
+			// 		return vecCompile.evaluate({x});
+			// 	});
+
+			// 	let plot = {
+			// 		x: xValues,
+			// 		y: yValues,
+			// 		type: 'scatter',
+			// 	}
+			// 	Plotly.newPlot('plotApp1', [plot]);
+			// }
+			
+			//ФУНКЦИЯ ОТРИСОВКИ ГРАФИКА
+			let app_g = () => {
+				let P = Number(document.querySelector('#PApp_g').value);//НАЧАЛЬНАЯ СУММА
+				let n = Number(document.querySelector('#nApp_g').value)/360;//К-ВО ДНЕЙ
+				let n1 = Number(document.querySelector('#nApp_g').value)/360;
+				let n2 = Number(document.querySelector('#nApp_g').value)/365;
+				let i = Number(document.querySelector('#iApp_g').value)/100;//ПРОЦЕНТ
+				let S = P*(1+n*i);//простые проценты
+				let S1 = P*Math.pow((1+i),n);//сложные проценты
+
+				if ((document.querySelector('#PApp_g').value)>0 && (document.querySelector('#nApp_g').value)>0 &&(document.querySelector('#iApp_g').value)>0){
+					document.querySelector('#SApp_g').innerHTML = S;
+					//document.querySelector('#S1App_g').innerHTML = S1;
+
+				}
+
+				let x = math.parse('x');
+				let func = String((S-P)/n)+'x+'+String(P);
+				//let func = String(P*(1+n*i));
+				let func1 = String((S-P)/n1)+'x+'+String(P);
+				let func2 = String((S-P)/n2)+'x+'+String(P);
+				let func3 = String((S1-P)/n)+'x+'+String(P);
+				let func4 = String((S1-P)/n1)+'x+'+String(P);
+				let func5 = String((S1-P)/n2)+'x+'+String(P);
+
+				let vecCompile = math.compile(math.parse(func).toString());
+				xValues = math.range(0,n+1, 1).toArray();
+
+				let vecCompile1 = math.compile(math.parse(func1).toString());
+				xValues = math.range(0,n+1, 1).toArray();
+				let vecCompile2 = math.compile(math.parse(func2).toString());
+				xValues = math.range(0,n+1, 1).toArray();
+				let vecCompile3 = math.compile(math.parse(func3).toString());
+				xValues = math.range(0,n+1, 1).toArray();
+				let vecCompile4 = math.compile(math.parse(func4).toString());
+				xValues = math.range(0,n+1, 1).toArray();
+				let vecCompile5 = math.compile(math.parse(func5).toString());
+				xValues = math.range(0,n+1, 1).toArray();
+
+				let yValues = xValues.map((x) => {
+					return vecCompile.evaluate({x});
+				});
+				let yValues1 = xValues.map((x) => {
+					return vecCompile1.evaluate({x});
+				});
+				let yValues2 = xValues.map((x) => {
+					return vecCompile2.evaluate({x});
+				});
+				let yValues3 = xValues.map((x) => {
+					return vecCompile3.evaluate({x});
+				});
+				let yValues4 = xValues.map((x) => {
+					return vecCompile4.evaluate({x});
+				});
+				let yValues5 = xValues.map((x) => {
+					return vecCompile5.evaluate({x});
+				});
+				let trace1 = {
+				x: xValues,
+				y: yValues,
+				type: 'scatter',
+				name: '360/360',
+				};
+
+				let trace2 = {
+				x: xValues,
+				y: yValues1,
+				type: 'scatter',
+				name: '365/360',
+				};
+				let trace3 = {
+				x: xValues,
+				y: yValues2,
+				type: 'scatter',
+				name: '365/365',
+				};
+				let trace4 = {
+				x: xValues,
+				y: yValues3,
+				type: 'scatter',
+				name: '36365',
+				};
+				let trace5 = {
+				x: xValues,
+				y: yValues4,
+				type: 'scatter',
+				name: '36365',
+				};
+				let trace6 = {
+				x: xValues,
+				y: yValues5,
+				type: 'scatter',
+				name: '36365',
+				};
+
+				let data = [ trace1, trace2, trace3, trace4, trace5, trace6 ];
+				//let data = trace1;
+
+				let layout ={
+				xaxis: {
+					range: [ 0, n ]
+				},
+				yaxis: {
+					range: [P, S1]
+				},
+				title:'Data Labels Hover'
+				};
+				Plotly.newPlot('plotApp', data);
+			}
+			//ФУНКЦИЯ СОЗДАНИЯ ТАБЛИЦЫ
+			let calendar = () => {
+				let table = [];
+				table[0]=['<table><tr>','<th>Jan</th>','<th>Feb</th>','<th>March</th>','<th>Apr</th>','<th>May</th>','<th>Jun</th>',
+				'<th>Jul</th>','<th>Aug</th>','<th>Sep</th>','<th>Oct</th>','<th>Nov</th>','<th>Dec</th></tr>'];
+				
+				for(let i=1;i<=31;i++)
+				{
+					let k=i;
+					if(i<30){
+						let day = ['<tr>'];
+						for(let j=1;j<=12;j++)
+						{
+							if(j<=7){
+								if((j!=2) && (j%2!=0)){
+									day.push('<td>'+k+'</td>');
+									k+=31;
+								}
+								else if((j!=2) && (j%2==0)){
+									day.push('<td>'+k+'</td>');
+									k+=30;
+								}
+								else if(j==2){
+									day.push('<td>'+k+'</td>');
+									k+=29;
+								}
+							} else{
+									if(j%2==0){
+										day.push('<td>'+k+'</td>');
+										k+=31;
+									}
+									else if(j%2!=0){
+										day.push('<td>'+k+'</td>');
+										k+=30;
+									}
+								}
+						}
+						day.push('</tr>');
+						table[i+1] = day;
+					} 
+					else{
+						if(i==30){
+							let day = ['<tr>'];
+							for(let j=1;j<=12;j++)
+							{
+								if(j<=7){
+									if((j!=2) && (j%2!=0)){
+										day.push('<td>'+k+'</td>');
+										k+=31;
+									}
+									else if((j!=2) && (j%2==0)){
+										day.push('<td>'+k+'</td>');
+										k+=30;
+									}
+									else if(j==2){
+										day.push('<td>'+' - '+'</td>');
+										k+=29;
+									}
+								} else{
+										if(j%2==0){
+											day.push('<td>'+k+'</td>');
+											k+=31;
+										}
+										else if(j%2!=0){
+											day.push('<td>'+k+'</td>');
+											k+=30;
+										}
+									}
+							}
+							day.push('</tr>');
+							table[i+1] = day;
+
+						} else if(i==31){
+							let day = ['<tr>'];
+							for(let j=1;j<=12;j++)
+							{
+								if(j<=7){
+									if((j!=2) && (j%2!=0)){
+										day.push('<td>'+k+'</td>');
+										k+=31;
+									}
+									else if((j!=2) && (j%2==0)){
+										day.push('<td>'+' - '+'</td>');
+										k+=30;
+									}
+									else if(j==2){
+										day.push('<td>'+' - '+'</td>');
+										k+=29;
+									}
+									
+								} else{
+										if(j%2==0){
+											day.push('<td>'+k+'</td>');
+											k+=31;
+										}
+										else if(j%2!=0){
+											day.push('<td>'+' - '+'</td>');
+											k+=30;
+										}
+									}
+							}
+							day.push('</tr>');
+							table[i+1] = day;
+						}
+						
+					}
+
+				}
+				table.push('</table>');
+				let s = table.join().replace(/,/g, '');
+									
+				document.querySelector('#calendar_table').innerHTML=s;
+				
+				document.querySelector('#calendar_table').style = 
+					"font-size: 9pt;";
+			}
+			// let ex_g = () => {
+			// 	let P = Number(document.querySelector('#PEx_g').value);
+			// 	let n = Number(document.querySelector('#nEx_g').value)/365;
+			// 	let i = Number(document.querySelector('#iEx_g').value)/100;
+			// 	let S = P*(1+n*i);
+
+			// 	if ((document.querySelector('#PEx_g').value)>0 && (document.querySelector('#nEx_g').value)>0 &&(document.querySelector('#iEx_g').value)>0){
+			// 		document.querySelector('#SEx_g').innerHTML = S;
+			// 	}
+
+			// 	let x = math.parse('x');
+			// 	let func = String((S-P)/n)+'x+'+String(P);
+
+			// 	let vecCompile = math.compile(math.parse(func).toString());
+			// 	xValues = math.range(0,n+1, 1).toArray();
+				
+
+			// 	let yValues = xValues.map((x) => {
+			// 		return vecCompile.evaluate({x});
+			// 	});
+
+			// 	let plot = {
+			// 		x: xValues,
+			// 		y: yValues,
+			// 		type: 'scatter',
+			// 	}
+			// 	Plotly.newPlot('plotEx', [plot]);
+			// }
+			
+		
+	
+
+
+			//Запускаем программы только после полной загрузки
+			window.onload = () =>  {
+				calendar();
+					//Открываем заметки или по кнопке или по клавише D
+					document.querySelector('#noteswitch').onclick = showNodes;
+				Reveal.configure({
+					keyboard: {
+						68: showNodes
+					}
+				});
+				
+				//Делаем слайды инклюзивными, заменив заголовок
+				$('h3').each((i, j) => {$(i).html(`
+					<span class="offscreen">Заголовок слайда.</span>
+						${$(i).text()}
+					<span class="offscreen">.</span>
+				`)});
+
+				//Делаем слайды инклюзивными, добавив окончание слайда
+				$('aside').after(`<span class="offscreen">
+					Конец слайда. Для продолжения нажмите
+					<kbd>Space</kbd>
+				</span>`);
+				//calendar();
+				
+				//document.querySelector('#PApp').onkeyup = app;
+				//document.querySelector('#nApp').onkeyup = app;
+				//document.querySelector('#iApp').onkeyup = app;
+				document.querySelector('#PApp_g').onkeyup = app_g;
+				document.querySelector('#nApp_g').onkeyup = app_g;
+				document.querySelector('#iApp_g').onkeyup = app_g;
+
+				//document.querySelector('#PEx_g').onkeyup = ex_g;
+				//document.querySelector('#nEx_g').onkeyup = ex_g;
+				//document.querySelector('#iEx_g').onkeyup = ex_g;
+				
+				//document.querySelector('#SApp_c').onkeyup = app_cre;
+			}
+
+			let showNodes = () => {
+				Reveal.configure({
+					showNotes: (
+						Reveal.getConfig().showNotes ? 
+							false: true
+						)
+				});
+				return false;
+			}
+		</script>
+	</body>
+</html>
